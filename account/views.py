@@ -36,7 +36,7 @@ def user_login(request):
 
         if user is not None:
             login(request, user)
-            return redirect('login')
+            return redirect('home')
         else:
             messages.warning(request, f'Username or password is incorrect')
 
