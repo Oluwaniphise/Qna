@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{%  block content %}
+{% include 'navbar.html' %}
+
+
+<div class="row mt-5">
+    <div class="col-md-6 mx-auto">
+      <div class="card">
+          <div class="card-body">
+              <h6 class="text-secondary">{{ user.first_name }} {{ user.last_name }}</h6>
+
+              <br>
+              <form action="" method="POST">
+                  {% csrf_token %} 
+                 
+                <p>{{form | crispy }} </p>
+                  <br>
+                  <button type="submit" class="btn btn-md btn-outline-info">Submit</button>
+              </form>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+</div>
+
+
+{% endblock %}

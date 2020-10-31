@@ -1,0 +1,26 @@
+
+/* red - e63946 */
+
+
+body{
+    background-color:#f1faee;
+}
+
+
+.card-flex{
+    display: flex;
+}
+
+.date, .profile{
+    margin-left: 1rem;
+}
+
+.user-image{
+    height:50px;
+    width:50px;
+    border-radius:50%;
+}
+
+/* h5 a{
+    color:black !important;
+} */

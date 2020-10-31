@@ -1,0 +1,1 @@
+web: gunicorn QuestionandAnswer.wsgi --log-file -

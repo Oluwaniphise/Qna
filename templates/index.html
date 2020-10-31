@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}QnA | Home{% endblock%}
+{% load crispy_forms_tags %}
+{% block content %}
+{% include 'navbar.html' %}
+
+<div class="container ">
+ 
+
+
+
+<div class="container mt-5">
+    {% for q in questions %}
+    <div class="row mb-4">
+        <div class="col-md-6 mx-auto">
+            <div class="card">
+                <div class="card-body">
+                    <small>{{user.first_name}} {{user.last_name}}</small>
+                    <small class="ml-2 text-align-right">{{q.created}}</small>
+                    <h5><a href="/details/{{q.slug}}">{{q.title}}</a></h5>
+                   <p>{{ q.details }}</p>
+                   
+                    
+                  
+                </div>
+            </div>
+        </div>
+       </div>
+    {% endfor %}
+</div>
+
+
+
+    
+
+{% endblock %}
