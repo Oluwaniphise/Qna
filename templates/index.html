@@ -16,7 +16,7 @@
         <div class="col-md-6 mx-auto">
             <div class="card">
                 <div class="card-body">
-                    <small>{{user.first_name}} {{user.last_name}}</small>
+                    <small>{{q.user.first_name}} {{q.user.last_name}}</small>
                     <small class="ml-2 text-align-right">{{q.created}}</small>
                     <h5><a href="/details/{{q.slug}}">{{q.title}}</a></h5>
                    <p>{{ q.details }}</p>
@@ -27,8 +27,11 @@
             </div>
         </div>
        </div>
-    {% endfor %}
+    {% endfor %}  
 </div>
+
+
+
 
 
 

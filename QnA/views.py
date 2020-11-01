@@ -8,9 +8,11 @@ from django.contrib.auth.models import User
 
 def home(request):
     questions = Question.objects.all()
-    # user = Question.objects.get(user)
+    # question_user = Question.objects.get(user)
 
-    context = { 'questions':questions }
+    context = { 'questions':questions, 
+    # 'question_user':question_user 
+    }
     
     return render(request, 'index.html', context)
 
