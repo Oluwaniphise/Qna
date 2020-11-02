@@ -20,6 +20,7 @@ def home(request):
 @login_required
 def ask(request):
     
+    
 
     form = QuestionForm
     if request.method == 'POST':
