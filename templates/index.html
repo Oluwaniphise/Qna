@@ -5,20 +5,25 @@
 {% block content %}
 {% include 'navbar.html' %}
 
-<div class="container ">
+<div class="container-fluid ">
  
 
 
 
-<div class="container mt-5">
+<div class="container-fluid mt-5">
     {% for q in questions %}
     <div class="row mb-4">
         <div class="col-md-6 mx-auto">
             <div class="card">
                 <div class="card-body">
+                    <div>
                     <small>{{q.user.first_name}} {{q.user.last_name}}</small>
                     <small class="ml-2 text-align-right">{{q.created}}</small>
-                    <h5><a href="/details/{{q.slug}}">{{q.title}}</a></h5>
+                    </div>
+
+                    <br>
+                    <h6><a href="/details/{{q.slug}}">{{q.title}}</a></h6>
+                    
                    <p>{{ q.details }}</p>
                    
                     

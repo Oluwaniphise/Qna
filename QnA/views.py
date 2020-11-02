@@ -8,10 +8,10 @@ from django.contrib.auth.models import User
 
 def home(request):
     questions = Question.objects.all()
-    # question_user = Question.objects.get(user)
+ 
 
     context = { 'questions':questions, 
-    # 'question_user':question_user 
+   
     }
     
     return render(request, 'index.html', context)
@@ -19,7 +19,7 @@ def home(request):
 
 @login_required
 def ask(request):
-    # instance = Question.objects.filter(user=request.user)
+    
 
     form = QuestionForm
     if request.method == 'POST':
