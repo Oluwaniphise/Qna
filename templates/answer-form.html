@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %} {{q.slug}} {% endblock %}
+{% block content %}
+{% include 'navbar.html' %}
+
+<div class="container-fluid pt-5">
+    <div class="col-md-6 mx-auto">
+
+    <h5>Answer</h5>
+
+    <form action="" method="POST">
+    {% csrf_token %} 
+   
+  <p>{{form | crispy }} </p>
+    <br>
+    <button type="submit" class="btn btn-md btn-outline-info">Submit</button>
+</form>
+
+</div>
+</div>
+{% endblock %}

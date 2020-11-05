@@ -2,8 +2,9 @@
 
 {% block title %} {{q.slug}} {% endblock %}
 {% block content %}
+{% include 'navbar.html' %}
 
-<div class="container-fluid">
+<div class="container-fluid pt-5">
 
 
 <div class="row mt-5">
@@ -13,6 +14,21 @@
              
  <h5>{{q.title}}</h5>
  <p>{{q.details}}</p>
+ <hr>
+<h3>Answers</h3>
+<hr>
+{% if not q.answers.all %}
+<p>No answers yet... </p>
+<a href="{% url 'answer-form' %}">Add One</a>
+{% else %}
+
+{% for answer in q.answers.all %}
+<h5>{{answer.user.first_name}} {{answer.user.last_name}}</h5>
+<p>{{answer.body}} </p>
+<hr>
+
+{% endfor %}
+{% endif %}
           </div>
       </div>
   </div>
