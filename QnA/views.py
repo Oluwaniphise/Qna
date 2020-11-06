@@ -54,11 +54,11 @@ def question_details(request,slug):
     return render(request, 'details.html', context)
 
 @login_required
-def answer_form(request, question_id):
+def answer_form(request):
     user = request.user
-    question = Question.objects.get(id=question_id)
+    # question = Question.objects.get(id=question_id)
     
-    form = AnswerForm(initial={'user':user, 'question':question})
+    form = AnswerForm(initial={'user':user})
     if request.method == 'POST':
         form = AnswerForm(request.POST)
         if form.is_valid():
