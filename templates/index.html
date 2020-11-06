@@ -5,10 +5,7 @@
 {% block content %}
 {% include 'navbar.html' %}
 
-<div class="container-fluid ">
-
-
-
+<div class="container-fluid">
 
     <div class="container-fluid mt-5">
         {% for q in questions %}
@@ -18,7 +15,7 @@
                     <div class="card-body">
                         <div>
                             <small>{{q.user.first_name}} {{q.user.last_name}}</small>
-                            <small class="ml-2 text-align-right">{{q.created}}</small>
+                            <small class="ml-2 text-align-right">{{q.created }}</small>
                         </div>
 
                         <br>
@@ -26,34 +23,30 @@
 
                         <p>{{ q.details }}</p>
 
-                         <!-- <div>
-                            <form action="{% url 'like-question' %}">
+                        <div class="d-flex">
+
+                            {% if request.user.is_authenticated %}
+                            <form action="{% url 'like-question' %}" method="POST">
                                 {% csrf_token %}
-                                <input type="hidden" name="question_id" value='{{q.id}}'>
                                 {% if user not in q.likes.all %}
-                                <button class="btn btn-sm btn-primary" type='submit'><i
-                                        class="fa fa-thumbs-up"></i></button>
+                                <button class="btn btn-sm btn-primary" value="{{q.id}}" name="question_id"><i
+                                        class="fa fa-thumbs-up">
 
-                                {% else %}
-                                
-                                <button class="btn btn-sm btn-danger" type='submit'><i
-                                        class="fa fa-thumbs-up"></i></button>
-                                {% endif %}
+                                        {% else %}
+                                        <button class="btn btn-sm btn-danger" value="{{q.id}}" name="question_id"><i
+                                                class="fa fa-thumbs-up">
+                                                {% endif %}
+
+                                            </i></button><strong class="ml-2">{{q.likes.all.count}} likes</strong>
+
                             </form>
-                             <small><a href="#">Answer</a></small>
+                            {% else %}
+                            <p><a href="{% url 'login' %}">Login</a> to like</p>
+                            {% endif %}
+
+                            <p class="ml-3"><a href="{% url 'answer-form' %}"><i class="fa fa-comment "></i></a></p>
+                            <strong class="ml-2">{{q.answers.count}}</strong>
                         </div>
-                        <strong>{{q.likes.all.count}} likes</strong> -->
-
-
- <form action="{% url 'like-question' %}" method="POST">
-    {% csrf_token %}
-    <button class="btn btn-sm btn-primary" value="{{q.id}}" 
-    name="question_id"><i class="fa fa-thumbs-up">
-        
-    </i></button><strong class="ml-2">{{q.likes.all.count}} likes</strong>
-
-</form>
-
 
                     </div>
                 </div>

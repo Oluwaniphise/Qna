@@ -6,7 +6,6 @@ body{
     background-color:#f1faee;
 }
 
-
 .card-flex{
     display: flex;
 }
@@ -15,12 +14,23 @@ body{
     margin-left: 1rem;
 }
 
-.user-image{
-    height:50px;
-    width:50px;
-    border-radius:50%;
-}
+
 
 /* h5 a{
     color:black !important;
 } */
+
+.fa.fa-comment{
+    color:grey;
+    font-size:1.5rem;
+}
+
+.heading{
+    background-color:#e63946;
+    color:white;
+}
+
+.btn-red{
+    background-color:#e63946 !important;
+    color:white;
+}

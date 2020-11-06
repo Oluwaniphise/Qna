@@ -15,15 +15,15 @@
  <h5>{{q.title}}</h5>
  <p>{{q.details}}</p>
  <hr>
-<h3>Answers</h3>
+<h3>Answers - {{q.answers.all.count}} answers</h3> 
 <hr>
 {% if not q.answers.all %}
 <p>No answers yet... </p>
 <a href="{% url 'answer-form' %}">Add One</a>
 {% else %}
-
+  
 {% for answer in q.answers.all %}
-<h5>{{answer.user.first_name}} {{answer.user.last_name}}</h5>
+<h6>{{answer.user.first_name}} {{answer.user.last_name}}</h6>
 <p>{{answer.body}} </p>
 <hr>
 

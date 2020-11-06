@@ -25,7 +25,7 @@ def home(request):
 @login_required
 def ask(request):
     
-    
+    questions = Question.objects.all()
 
     form = QuestionForm
     if request.method == 'POST':
@@ -33,7 +33,7 @@ def ask(request):
         if form.is_valid():
             form.save()
             return redirect('home')
-    context = {'form':form}
+    context = {'form':form, 'questions':questions}
 
     return render(request, 'ask.html', context)
 
@@ -51,25 +51,28 @@ def question_details(request,slug):
 
 @login_required
 def answer_form(request):
+    user = request.user
     form = AnswerForm()
     if request.method == 'POST':
-        form = AnswerForm(request.POST)
+        form = AnswerForm(request.POST, initial={'user':user})
         if form.is_valid():
             form.save()
             return redirect('home')
     context = { 'form':form }
     return render(request, 'answer-form.html', context)
-    
-@login_required
+
+
+
 def like_question(request):
     user = request.user
     question = get_object_or_404(Question, id=request.POST.get('question_id'))
-    question.likes.add(user)
-    
 
 
-    
-        
+    if user in question.likes.all():
+        question.likes.remove(user)
+    else:
+        question.likes.add(user)
+      
 
     return HttpResponseRedirect(reverse('home'))
     
