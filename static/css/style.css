@@ -4,6 +4,7 @@
 
 body{
     background-color:#f1faee;
+    overflow-x: hidden;
 }
 
 .card-flex{

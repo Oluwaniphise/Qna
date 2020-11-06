@@ -24,10 +24,14 @@ def home(request):
 
 @login_required
 def ask(request):
+    user = request.user
+   
     
     questions = Question.objects.all()
 
-    form = QuestionForm
+    form = QuestionForm(initial={'user':user,
+    #  'question':question
+     })
     if request.method == 'POST':
         form = QuestionForm(request.POST)
         if form.is_valid():
@@ -50,11 +54,13 @@ def question_details(request,slug):
     return render(request, 'details.html', context)
 
 @login_required
-def answer_form(request):
+def answer_form(request, question_id):
     user = request.user
-    form = AnswerForm()
+    question = Question.objects.get(id=question_id)
+    
+    form = AnswerForm(initial={'user':user, 'question':question})
     if request.method == 'POST':
-        form = AnswerForm(request.POST, initial={'user':user})
+        form = AnswerForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('home')

@@ -44,7 +44,7 @@
                             <p><a href="{% url 'login' %}">Login</a> to like</p>
                             {% endif %}
 
-                            <p class="ml-3"><a href="{% url 'answer-form' %}"><i class="fa fa-comment "></i></a></p>
+                            <p class="ml-3"><a href="{% url 'answer-form' q.id %}"><i class="fa fa-comment "></i></a></p>
                             <strong class="ml-2">{{q.answers.count}}</strong>
                         </div>
 

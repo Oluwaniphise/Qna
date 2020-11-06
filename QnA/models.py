@@ -14,7 +14,7 @@ class Question(models.Model):
     likes = models.ManyToManyField(User, related_name='likes', blank=True)
 
     def __str__(self):
-        return f'{self.title} - {self.user}'
+        return f'{self.title}'
 
     class Meta:
         ordering = ['-created',]
