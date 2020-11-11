@@ -10,7 +10,7 @@
     <div class="container-fluid mt-5">
         {% for q in questions %}
         <div class="row mb-4">
-            <div class="col-md-6 mx-auto col-sm-12">
+            <div class="col-md-6 mx-auto col-sm-12 col-xs-12">
                 <div class="card">
                     <div class="card-body">
                         <div>
@@ -19,7 +19,7 @@
                         </div>
 
                         <br>
-                        <h6><a href="/details/{{q.slug}}">{{q.title}}</a></h6>
+                        <h6><a href="/details/{{q.slug}}/{{q.id}}">{{q.title}}</a></h6>
 
                         <p>{{ q.details }}</p>
 
@@ -42,12 +42,14 @@
                             </form>
                             {% else %}
                             <p><a href="{% url 'login' %}">Login</a> to like</p>
+                            
                             {% endif %}
 
-                            <p class="ml-3"><a href="{% url 'answer-form' %}"><i class="fa fa-comment "></i></a></p>
-                            <strong class="ml-2">{{q.answers.count}}</strong>
+                            <p class="ml-3"><a href="{% url 'answer-form' q.slug q.id   %}"><i class="fa fa-comment "></i></a></p>
+                            <strong class="ml-2">{{q.answers_que.count}}</strong>
+                            
                         </div>
-
+                        
                     </div>
                 </div>
             </div>

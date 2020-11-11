@@ -1,8 +1,12 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
-{% block title %} {{q.slug}} {% endblock %}
+
+{% block title %} QnA | {{q.title}} {% endblock %}
+
+
 {% block content %}
 {% include 'navbar.html' %}
+
 
 <div class="container-fluid pt-5">
     <div class="col-md-6 mx-auto">
@@ -13,7 +17,7 @@
     {% csrf_token %} 
    
   <p>{{form | crispy }} </p>
-  
+ 
     <br>
     <button type="submit" class="btn btn-md btn-red">Submit</button>
 </form>

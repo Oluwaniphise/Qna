@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %} {{q.slug}} {% endblock %}
+{% block title %} QnA | {{q.title}} {% endblock %}
 {% block content %}
 {% include 'navbar.html' %}
 
@@ -15,16 +15,24 @@
  <h5>{{q.title}}</h5>
  <p>{{q.details}}</p>
  <hr>
-<h3>Answers - {{q.answers.all.count}}</h3> 
+<h3>Answers - {{q.answers_que.count}}</h3> 
 <hr>
-{% if not q.answers.all %}
+{% if not q.answers_que.all %}
 <p>No answers yet... </p>
-<a href="{% url 'answer-form' %}">Add One</a>
+<a href="{% url 'answer-form' q.slug q.id %}">Add One</a>
 {% else %}
   
-{% for answer in q.answers.all %}
+{% for answer in q.answers_que.all %}
 <h6>{{answer.user.first_name}} {{answer.user.last_name}}</h6>
 <p>{{answer.body}} </p>
+
+
+<br>
+<a href="{% url 'answer-form' q.slug q.id %}">Add answer</a>
+
+
+
+
 <hr>
 
 {% endfor %}

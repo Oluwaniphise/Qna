@@ -4,12 +4,12 @@
 {%  block content %}
 {% include 'navbar.html' %}
 
-{% for q in questions %}
+
 <div class="row mt-5">
     <div class="col-md-6 mx-auto">
       <div class="card">
           <div class="card-body">
-              <h6 class="text-secondary">{{ q.user.first_name }} {{ q.user.last_name }}</h6>
+              <h6 class="text-secondary">{{ user.first_name }} {{ user.last_name }}</h6>
 
               <br>
               <form action="" method="POST">
@@ -27,5 +27,5 @@
 
 </div>
 
-{% endfor %}
+
 {% endblock %}
