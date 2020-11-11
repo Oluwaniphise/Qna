@@ -59,7 +59,7 @@ def answer_form(request, question_id, slug):
     user = request.user
     q = get_object_or_404(Question, id=question_id, slug=slug)
     
-    form = AnswerForm(initial={'question':q})
+    form = AnswerForm(initial={'question':q, 'user':user})
 
     def form_valid(self, form):
         form.instance.user = self.request.user
