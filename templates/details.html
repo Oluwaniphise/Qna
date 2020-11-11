@@ -27,15 +27,16 @@
 <p>{{answer.body}} </p>
 
 
-<br>
-<a href="{% url 'answer-form' q.slug q.id %}">Add answer</a>
-
 
 
 
 <hr>
 
 {% endfor %}
+<br>
+<a href="{% url 'answer-form' q.slug q.id %}">Add answer</a>
+
+
 {% endif %}
           </div>
       </div>
