@@ -5,15 +5,21 @@ from .models import Question, Answer
 from django.contrib.auth.models import User
 from django.urls import reverse
 from django.http import HttpResponseRedirect
-from django.core.paginator import Paginator
+from django.core.paginator import Paginator, EmptyPage
 
 
 
 def home(request):
     questions = Question.objects.all()
+    paginator = Paginator(questions, 1)
+    page_num = request.GET.get('page', 1)
+    try:
+        page_obj = paginator.page(page_num)
+    except EmptyPage:
+        page_obj = paginator.page(1)
     user = request.user
     context = {
-         'questions':questions, 
+         'questions':page_obj, 
          'user':user,
          
    
@@ -58,7 +64,8 @@ def answer_form(request, question_id, slug):
     form = AnswerForm()
     user = request.user
     q = get_object_or_404(Question, id=question_id, slug=slug)
-    
+   
+
     form = AnswerForm(initial={'question':q, 'user':user})
 
     def form_valid(self, form):

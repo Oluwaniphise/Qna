@@ -1,5 +1,5 @@
 from django.http import HttpResponse
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, HttpResponseRedirect
 from django.contrib.auth import authenticate, login
 from account.forms import SignUpForm
 from django.contrib import messages
@@ -19,8 +19,9 @@ def register(request):
             user = authenticate(request, username=username, password=password)
             
             messages.success(request, f'Account created for {username}! You can now login.')
-            return redirect('login')
             login(request, user)
+            return HttpResponseRedirect('/')
+            
             
     context = {'form':form}
     
