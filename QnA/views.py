@@ -68,9 +68,9 @@ def answer_form(request, question_id, slug):
 
     form = AnswerForm(initial={'question':q, 'user':user})
 
-    def form_valid(self, form):
-        form.instance.user = self.request.user
-        return super().form_valid(form)
+    # def form_valid(self, form):
+    #     form.instance.user = self.request.user
+    #     return super().form_valid(form)
         
     if request.method == 'POST':
         form = AnswerForm(request.POST)
@@ -98,3 +98,12 @@ def like_question(request):
     return HttpResponseRedirect(reverse('home'))
     
     
+
+def profile(request):
+    
+    user = request.user
+
+    answers = Answer.objects.filter(user=request.user)
+    questions = Question.objects.filter(user=request.user)
+    context  = {'user':user, 'questions':questions, 'answers':answers}
+    return render(request, 'profile.html', context)

@@ -17,7 +17,7 @@
     <div class="navbar-nav">
       {% if user.is_authenticated %}
       <a class="nav-link nav-item ml-5" href="{% url 'ask' %}"> Ask</a>
-      <a class="nav-link nav-item ml-5" href="#">Profile</a>
+      <a class="nav-link nav-item ml-5" href="{% url 'profile' %}">Profile</a>
       <a class="nav-link nav-item ml-5" href="{% url 'logout' %}"> Logout</a>
       
   
