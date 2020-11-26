@@ -14,6 +14,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div>
+                          <img src="{{q.user.profile.image.url}}" class="img-fluid img-profile-home" alt="">
                             <small>{{q.user.first_name}} {{q.user.last_name}}</small>
                             <small class="ml-2 text-align-right">{{q.created }}</small>
                         </div>
@@ -34,7 +35,7 @@
 
                                         {% else %}
                                         <button class="btn btn-sm btn-danger" value="{{q.id}}" name="question_id"><i
-                                                class="fa fa-thumbs-up">
+                                                class="fa fa-thumbs-down">
                                                 {% endif %}
 
                                             </i></button><strong class="ml-2">{{q.likes.all.count }} likes</strong>

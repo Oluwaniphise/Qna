@@ -5,26 +5,63 @@
 {% include 'navbar.html' %}
 
 
-<div class="row mt-5">
+<div class="text-center mx-auto mt-5 col-md-6">
+    {% if messages %}
+    
+        {% for message in messages %}
+        <div class="alert-{{message.tags}} alert" role="alert">
+            {{message}}
+       
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>
+
+<div class="row mt-2">
     <div class="col-md-6 mx-auto">
       <div class="card">
           <div class="card-body">
-              <h6 class="text-secondary">{{ user.first_name }} {{ user.last_name }}</h6>
+             
       
-           
-             You have asked <strong>{{questions.count}}</strong>  questions, given <strong>{{answers.count}}</strong> answers, and 
-              liked 
-              
-              <strong>{{ user.likes.count  }}</strong>  questions
-        
+           <div class="profile-container ">
+               {% if user.profile.image %}
+               <img src="{{user.profile.image.url}}" class=" img-profile img-fluid" alt="">
+{% else %}
+<img src="/media/profile_pics/mirademy_man.jpg" class=" img-profile img-fluid" height="100px" width="100px" alt="">
+{% endif %}
+               <div class="user-info">
+                   <h2 class="name-heading">{{user.username}}</h2>
+                   <p>{{user.email}}</p>
+                   
+                    <p><strong>No of Questions: </strong> {{questions.count}}</p>
+                   <p> <strong>No of likes:</strong>   {{ user.likes.count  }} </p>
+                   <p>  <strong>No of answers:</strong>   {{answers.count}}</p> 
+               </div>
+           </div>
+
+
+
+
           </div>
 
           
       </div>
   </div>
+ 
 </div>
 
+<div class="col-md-6 mt-3 mx-auto">
 
+    <form method="POST" enctype="multipart/form-data"> 
+        {% csrf_token %}
+
+        {{u_form | crispy}}
+        {{p_form | crispy }}
+        
+        <button class="btn btn-md btn-outline-info" type="submit"> Update</button>
+    </form>
+
+</div>
 </div>
 
 

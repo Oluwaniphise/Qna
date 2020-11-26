@@ -1,12 +1,12 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from .forms import QuestionForm, AnswerForm
+from .forms import QuestionForm, AnswerForm, UserUpdateForm, ProfileUpdateForm
 from .models import Question, Answer
 from django.contrib.auth.models import User
 from django.urls import reverse
 from django.http import HttpResponseRedirect
 from django.core.paginator import Paginator, EmptyPage
-
+from django.contrib import messages
 
 
 def home(request):
@@ -99,11 +99,36 @@ def like_question(request):
     
     
 
+
+
 def profile(request):
+    u_form = UserUpdateForm(instance=request.user)
+    p_form = ProfileUpdateForm(instance=request.user.profile)
     
     user = request.user
 
+    if request.method == 'POST':
+        u_form = UserUpdateForm(request.POST, instance=request.user)
+        p_form = ProfileUpdateForm(request.POST,  request.FILES, instance=request.user.profile)
+        if u_form.is_valid() and p_form.is_valid():
+            u_form.save()
+            p_form.save()
+            messages.success(request, f'Your profile has been updated.')
+            return redirect('profile')
+    else:
+        u_form = UserUpdateForm(instance=request.user)
+        p_form = ProfileUpdateForm(instance=request.user.profile)
+
+
     answers = Answer.objects.filter(user=request.user)
     questions = Question.objects.filter(user=request.user)
-    context  = {'user':user, 'questions':questions, 'answers':answers}
+
+    context  = {'user':user, 
+    'questions':questions,
+     'answers':answers, 
+     'p_form':p_form, 'u_form':u_form
+     }
     return render(request, 'profile.html', context)
+
+
+

@@ -17,10 +17,27 @@ body{
 
 
 
-/* h5 a{
-    color:black !important;
-} */
+.profile-container{
+    display:flex;
+    justify-content:safe ;
+}
 
+.user-info{
+    margin-left:2rem;
+
+}
+
+.img-profile{
+    height:170px;
+    width:170px;
+    border-radius: 100%;
+}
+
+.img-profile-home{
+    height:70px;
+    width:70px;
+    border-radius: 100%;
+}
 .fa.fa-comment{
     color:grey;
     font-size:1.5rem;

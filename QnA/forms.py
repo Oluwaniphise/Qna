@@ -1,6 +1,7 @@
 from django import forms
 from django.forms import ModelForm
-from .models import Question, Answer
+from .models import Question, Answer, Profile
+from django.contrib.auth.models import User
 
 
 
@@ -33,3 +34,17 @@ class AnswerForm(ModelForm):
         'question':forms.TextInput(attrs={'class':'form-control', 'readonly':'readonly'})
     }
     
+
+
+
+class UserUpdateForm(ModelForm):
+    email = forms.EmailField()
+    class Meta:
+        model = User
+        fields = ['username', 'email']
+
+
+class ProfileUpdateForm(ModelForm):
+    class Meta:
+        model = Profile
+        fields = ['image']

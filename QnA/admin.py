@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Question, Answer
+from .models import Question, Answer, Profile
 
 # Register your models here.
 
@@ -8,3 +8,4 @@ class QuestionAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('title',)}
 
 admin.site.register(Answer)
+admin.site.register(Profile)
