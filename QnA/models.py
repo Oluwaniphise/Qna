@@ -56,13 +56,13 @@ pre_save.connect(pre_save_question_receiver, sender=Question)
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    image = models.ImageField(upload_to='profile_pics')
+    image = models.ImageField(default="default.jpg", upload_to='profile_pics')
 
     def __str__(self):
         return f'{self.user.username} profile'
 
-    def save(self):
-        super().save()
+    def save(self, *args, **kwargs):
+        super(Profile, self).save(*args, **kwargs)
 
         img = Image.open(self.image.path)
 
@@ -70,6 +70,9 @@ class Profile(models.Model):
             output_size = (300, 300)
             img.thumbnail(output_size)
             img.save(self.image.path)
+
+    
+
 
 
 
