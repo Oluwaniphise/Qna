@@ -25,9 +25,9 @@
       
            <div class="profile-container ">
                {% if user.profile.image %}
-               <img src="{{user.profile.image.url}}" class=" img-profile img-fluid" alt="">
+               <img src="{{user.profile.image.url}}" class=" img-profile img-fluid" alt="user-image">
 {% else %}
-<img src="/media/profile_pics/mirademy_man.jpg" class=" img-profile img-fluid" height="100px" width="100px" alt="">
+<img src="/media/profile_pics/mirademy_man.jpg" class=" img-profile img-fluid"  alt="user-image">
 {% endif %}
                <div class="user-info">
                    <h2 class="name-heading">{{user.username}}</h2>

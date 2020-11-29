@@ -14,11 +14,12 @@
                 <div class="card">
                     <div class="card-body">
                         <div>
-                          {% if q.user.profile.image %}
-                          <img src="{{q.user.profile.image.url}}" class="img-fluid img-profile-home" alt="">
-{% else %}
-                          <img src="/media/profile_pics/mirademy_man.jpg" class="img-fluid img-profile-home" alt="">
-                          {% endif %}
+                         
+                          <img src="{{q.user.profile.image.url}}" class="img-fluid img-profile-home" alt=""> 
+                         <!-- <img src="/media/default.jpg" class="img-fluid img-profile-home" alt="question-user-image"> -->
+
+                          
+                         
                             <small>{{q.user.first_name}} {{q.user.last_name}}</small>
                             <small class="ml-2 text-align-right">{{q.created }}</small>
                         </div>
