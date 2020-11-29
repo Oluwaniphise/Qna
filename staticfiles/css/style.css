@@ -52,3 +52,13 @@ body{
     background-color:#e63946 !important;
     color:white;
 }
+
+
+
+@media screen and (max-width:560px){
+    .img-profile{
+        height:85px;
+        width:85px;
+        border-radius: 100%;
+    }
+}
