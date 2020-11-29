@@ -100,7 +100,7 @@ def like_question(request):
     
 
 
-
+@login_required
 def profile(request):
     u_form = UserUpdateForm(instance=request.user)
     p_form = ProfileUpdateForm(instance=request.user.profile)
