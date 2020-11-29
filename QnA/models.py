@@ -32,8 +32,8 @@ class Answer(models.Model):
     body = models.TextField()
     answer_likes = models.ManyToManyField(User, related_name='answer_likes', blank=True)
 
-    def __str__(self):
-        return self.question.title
+    # def __str__(self):
+    #     return self.question.title
 
 
 
