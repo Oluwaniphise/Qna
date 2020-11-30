@@ -47,4 +47,6 @@ class UserUpdateForm(ModelForm):
 class ProfileUpdateForm(ModelForm):
     class Meta:
         model = Profile
-        fields = ['image']
+        fields = ['about_user','image']
+
+    about_user = forms.CharField(label="Bio", widget=forms.Textarea(attrs={'cols':'5', 'rows':'5'}))

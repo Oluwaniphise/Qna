@@ -11,7 +11,7 @@ from django.contrib import messages
 
 def home(request):
     questions = Question.objects.all()
-    paginator = Paginator(questions, 1)
+    paginator = Paginator(questions, 3)
     page_num = request.GET.get('page', 1)
     try:
         page_obj = paginator.page(page_num)
